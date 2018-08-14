@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:learn_zhihu_flutter/bean.dart';
+import 'package:learn_zhihu_flutter/drawerPage.dart';
 import 'package:learn_zhihu_flutter/newsItem.dart';
 
 class NewsListWidget extends StatefulWidget {
@@ -69,27 +70,33 @@ class NewsListStatus extends State<NewsListWidget> {
     }
   }
 
+  Widget _body() {
+    return RefreshIndicator(
+      onRefresh: _refreshData,
+      child: contentList == null
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : ListView.builder(
+              controller: _scrollController,
+              physics: AlwaysScrollableScrollPhysics(),
+              itemCount: contentList == null ? 0 : contentList.length,
+              itemBuilder: (context, index) {
+                return NewsItemWidget(contentList[index]);
+              }),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(_title),
-        centerTitle: true,
-      ),
-      body: RefreshIndicator(
-        onRefresh: _refreshData,
-        child: contentList == null
-            ? Center(
-                child: CircularProgressIndicator(),
-              )
-            : ListView.builder(
-                controller: _scrollController,
-                physics: AlwaysScrollableScrollPhysics(),
-                itemCount: contentList == null ? 0 : contentList.length,
-                itemBuilder: (context, index) {
-                  return NewsItemWidget(contentList[index]);
-                }),
-      ),
-    );
+        appBar: AppBar(
+          title: Text(_title),
+          centerTitle: true,
+        ),
+        body: _body(),
+        drawer: Drawer(
+          child: DrawPage(),
+        ));
   }
 }
