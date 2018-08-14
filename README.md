@@ -1,4 +1,4 @@
-# learn_zhihu_flutter
+# flutter 练习
 
 A new Flutter application.
 
