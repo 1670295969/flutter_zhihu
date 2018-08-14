@@ -5,8 +5,7 @@
 // are correct.
 
 import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';dart';
-
+import 'package:flutter_test/flutter_test.dart';
 import 'package:learn_zhihu_flutter/main.dart';
 
 void main() {
