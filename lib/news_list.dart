@@ -95,20 +95,16 @@ class NewsListStatus extends State<NewsListWidget> {
 
   Widget _buildContentWidget() {
     return Container(
-      child: Column(
-        children: <Widget>[
-          _topBanner(),
-          Expanded(
-            child: ListView.builder(
-                controller: _scrollController,
-                physics: AlwaysScrollableScrollPhysics(),
-                itemCount: contentList == null ? 0 : contentList.length,
-                itemBuilder: (context, index) {
-                  return NewsItemWidget(contentList[index]);
-                }),
-          ),
-        ],
-      ),
+      child: ListView.builder(
+          controller: _scrollController,
+          physics: AlwaysScrollableScrollPhysics(),
+          itemCount: contentList == null ? 0 : (contentList.length + 1),
+          itemBuilder: (context, index) {
+            if (index == 0) {
+              return _topBanner();
+            }
+            return NewsItemWidget(contentList[index - 1]);
+          }),
     );
   }
 
