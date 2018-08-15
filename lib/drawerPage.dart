@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:learn_zhihu_flutter/bean.dart';
+import 'package:learn_zhihu_flutter/callback.dart';
 
 //void main() {
 ////  runApp(MaterialApp(
@@ -13,6 +14,10 @@ import 'package:learn_zhihu_flutter/bean.dart';
 //}
 
 class DrawPage extends StatefulWidget {
+  final OnThemItem themeCallBack;
+
+  DrawPage(this.themeCallBack);
+
   @override
   State<StatefulWidget> createState() {
     return _DrawPageStatus();
@@ -111,6 +116,7 @@ class _DrawPageStatus extends State<DrawPage> {
     return GestureDetector(
         onTap: () {
           Navigator.of(context).pop();
+          widget.themeCallBack(-1, "首页");
         },
         child: Container(
           child: Padding(
@@ -138,6 +144,7 @@ class _DrawPageStatus extends State<DrawPage> {
     return GestureDetector(
       onTap: () {
         Navigator.pop(context);
+        widget.themeCallBack(item.id, item.name);
       },
       child: Padding(
         padding: EdgeInsets.only(left: 15.0, top: 10.0, bottom: 10.0),

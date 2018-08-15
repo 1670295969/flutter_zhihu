@@ -28,6 +28,7 @@ class NewsListWidget extends StatefulWidget {
 class NewsListStatus extends State<NewsListWidget> {
   ScrollController _scrollController;
   String _title = "首页";
+  int _id = -1;
   List<NewsItem> barList;
   List<NewsItem> contentList;
 
@@ -46,13 +47,21 @@ class NewsListStatus extends State<NewsListWidget> {
   Future<Null> _refreshData() {
     final Completer<Null> completer = new Completer<Null>();
 
-    http.get("https://news-at.zhihu.com/api/4/news/latest").then((resp) {
+    String url = "";
+    if (_id < 0) {
+      url = "https://news-at.zhihu.com/api/4/news/latest";
+    } else {
+      url = "https://news-at.zhihu.com/api/4/theme/$_id";
+    }
+
+    http.get(url).then((resp) {
       String respStr = resp.body;
       print(respStr);
       Map<String, dynamic> map = json.decode(respStr);
 
-      barList = NewsItem.fromJsonWithBar(map["top_stories"]);
+//      barList = NewsItem.fromJsonWithBar(map["top_stories"]);
       contentList = NewsItem.fromJsonWithContent(map["stories"]);
+      print(contentList);
       setState(() {});
     });
 
@@ -87,6 +96,14 @@ class NewsListStatus extends State<NewsListWidget> {
     );
   }
 
+  void changeData(int id, String title) {
+    _id = id;
+    _title = title;
+    contentList = null;
+    setState(() {});
+    _refreshData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,7 +113,7 @@ class NewsListStatus extends State<NewsListWidget> {
         ),
         body: _body(),
         drawer: Drawer(
-          child: DrawPage(),
+          child: DrawPage(changeData),
         ));
   }
 }

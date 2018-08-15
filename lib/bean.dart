@@ -7,8 +7,11 @@ class NewsItem {
 
   static List<NewsItem> fromJsonWithContent(List<dynamic> json) {
     return json.map((map) {
-      return NewsItem(
-          content: map["title"], url: map["images"][0], id: map["id"]);
+      String imgUrl = "";
+      if (map["images"] != null) {
+        imgUrl = map["images"][0];
+      }
+      return NewsItem(content: map["title"], url: imgUrl, id: map["id"]);
     }).toList();
   }
 
