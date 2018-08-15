@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:learn_zhihu_flutter/WebPage.dart';
 import 'package:learn_zhihu_flutter/bean.dart';
+import 'package:learn_zhihu_flutter/theme/theme.dart';
 
 class NewsItemWidget extends StatefulWidget {
   final NewsItem item;
@@ -41,7 +42,7 @@ class NewsItemStatus extends State<NewsItemWidget> {
                           child: Text(
                             item.content,
                             style: TextStyle(
-                                color: Colors.black87, fontSize: 14.0),
+                                color: ThemeColor.textColor(), fontSize: 14.0),
                           ),
                         ),
                       ),

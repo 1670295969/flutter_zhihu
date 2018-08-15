@@ -6,10 +6,16 @@ import 'package:http/http.dart' as http;
 import 'package:learn_zhihu_flutter/banner/banner.dart';
 import 'package:learn_zhihu_flutter/banner/banner_item.dart';
 import 'package:learn_zhihu_flutter/bean.dart';
+import 'package:learn_zhihu_flutter/callback.dart';
 import 'package:learn_zhihu_flutter/drawerPage.dart';
 import 'package:learn_zhihu_flutter/newsItem.dart';
+import 'package:learn_zhihu_flutter/theme/theme.dart';
 
 class NewsListWidget extends StatefulWidget {
+  OnChangeTheme changeTheme;
+
+  NewsListWidget(this.changeTheme);
+
   @override
   State<StatefulWidget> createState() {
     return NewsListStatus();
@@ -111,6 +117,7 @@ class NewsListStatus extends State<NewsListWidget> {
   Widget _body() {
     return RefreshIndicator(
       onRefresh: _refreshData,
+      backgroundColor: ThemeColor.themeColor(),
       child: contentList == null
           ? Center(
               child: CircularProgressIndicator(),
@@ -127,12 +134,25 @@ class NewsListStatus extends State<NewsListWidget> {
     _refreshData();
   }
 
+  Widget _changeTheme() {
+    return InkWell(
+      onTap:
+          //更改主题色
+          widget.changeTheme,
+      child: Icon(
+        Icons.timelapse,
+        color: ThemeColor.textColor(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: Text(_title),
           centerTitle: true,
+          actions: <Widget>[_changeTheme()],
         ),
         body: _body(),
         drawer: Drawer(

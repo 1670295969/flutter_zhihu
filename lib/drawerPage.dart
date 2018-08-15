@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:learn_zhihu_flutter/bean.dart';
 import 'package:learn_zhihu_flutter/callback.dart';
+import 'package:learn_zhihu_flutter/theme/theme.dart';
 
 //void main() {
 ////  runApp(MaterialApp(
@@ -98,7 +99,7 @@ class _DrawPageStatus extends State<DrawPage> {
 
   Widget _head() {
     return Container(
-      color: Colors.blue,
+      color: ThemeColor.themeColor(),
       height: 150.0,
       child: Padding(
         padding: EdgeInsets.only(left: 15.0, top: 30.0),
@@ -154,14 +155,14 @@ class _DrawPageStatus extends State<DrawPage> {
               flex: 3,
               child: Text(
                 item.name,
-                style: TextStyle(fontSize: 16.0, color: Colors.black),
+                style: TextStyle(fontSize: 16.0, color: ThemeColor.textColor()),
               ),
             ),
             Expanded(
               flex: 1,
               child: Icon(
                 Icons.add,
-                color: Colors.grey,
+                color: ThemeColor.isNight ? Colors.white : Colors.grey,
               ),
             )
           ],
