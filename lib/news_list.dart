@@ -3,6 +3,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:learn_zhihu_flutter/banner/banner.dart';
+import 'package:learn_zhihu_flutter/banner/banner_item.dart';
 import 'package:learn_zhihu_flutter/bean.dart';
 import 'package:learn_zhihu_flutter/drawerPage.dart';
 import 'package:learn_zhihu_flutter/newsItem.dart';
@@ -59,7 +61,7 @@ class NewsListStatus extends State<NewsListWidget> {
       print(respStr);
       Map<String, dynamic> map = json.decode(respStr);
 
-//      barList = NewsItem.fromJsonWithBar(map["top_stories"]);
+      barList = NewsItem.fromJsonWithBar(map["top_stories"]);
       contentList = NewsItem.fromJsonWithContent(map["stories"]);
       print(contentList);
       setState(() {});
@@ -79,6 +81,37 @@ class NewsListStatus extends State<NewsListWidget> {
     }
   }
 
+  Widget _topBanner() {
+    if (barList == null) {
+      return Container(
+        height: 0.0,
+        child: Text(""),
+      );
+    }
+    return MainBanner(barList.map((item) {
+      return BannerItem(title: item.content, imgUrl: item.url);
+    }).toList());
+  }
+
+  Widget _buildContentWidget() {
+    return Container(
+      child: Column(
+        children: <Widget>[
+          _topBanner(),
+          Expanded(
+            child: ListView.builder(
+                controller: _scrollController,
+                physics: AlwaysScrollableScrollPhysics(),
+                itemCount: contentList == null ? 0 : contentList.length,
+                itemBuilder: (context, index) {
+                  return NewsItemWidget(contentList[index]);
+                }),
+          ),
+        ],
+      ),
+    );
+  }
+
   Widget _body() {
     return RefreshIndicator(
       onRefresh: _refreshData,
@@ -86,13 +119,7 @@ class NewsListStatus extends State<NewsListWidget> {
           ? Center(
               child: CircularProgressIndicator(),
             )
-          : ListView.builder(
-              controller: _scrollController,
-              physics: AlwaysScrollableScrollPhysics(),
-              itemCount: contentList == null ? 0 : contentList.length,
-              itemBuilder: (context, index) {
-                return NewsItemWidget(contentList[index]);
-              }),
+          : _buildContentWidget(),
     );
   }
 

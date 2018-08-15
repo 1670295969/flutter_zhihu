@@ -16,8 +16,11 @@ class NewsItem {
   }
 
   static List<NewsItem> fromJsonWithBar(List<dynamic> json) {
+    if (json == null) {
+      return null;
+    }
     return json.map((map) {
-      return NewsItem(content: map["title"], url: map["images"]);
+      return NewsItem(content: map["title"], url: map["image"]);
     }).toList();
   }
 }
