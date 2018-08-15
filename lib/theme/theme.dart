@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 class ThemeColor {
   static bool isNight = true;
 
+  static changeTheme() {
+    isNight = !isNight;
+  }
+
   static ThemeData theme() {
     return isNight ? ThemeData.dark() : ThemeData.light();
   }

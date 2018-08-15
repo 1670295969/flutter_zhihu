@@ -21,7 +21,7 @@ class MainAppStatus extends State<MainApp> {
       theme: ThemeColor.theme(),
       title: "haha",
       home: NewsListWidget(() {
-        ThemeColor.isNight = !ThemeColor.isNight;
+        ThemeColor.changeTheme();
         setState(() {});
       }),
     );
