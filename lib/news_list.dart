@@ -27,7 +27,7 @@ class NewsListWidget extends StatefulWidget {
 
 class NewsListStatus extends State<NewsListWidget> {
   ScrollController _scrollController;
-  String _title = "newsList";
+  String _title = "首页";
   List<NewsItem> barList;
   List<NewsItem> contentList;
 
