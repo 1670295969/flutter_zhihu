@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="59a2c92c-7c1d-4f67-b878-f9d0082fcac3" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -77,8 +76,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="114">
-                <caret line="6" column="2" lean-forward="false" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
+              <first_editor relative-caret-position="133">
+                <caret line="7" column="15" lean-forward="false" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="15" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -494,7 +493,14 @@
       <option name="project" value="LOCAL" />
       <updated>1534313567256</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="完结功能说明添加">
+      <created>1534313817340</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1534313817340</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -545,7 +551,8 @@
     <MESSAGE value="标题调整" />
     <MESSAGE value="抽屉回调加入" />
     <MESSAGE value="首页banner功能加入" />
-    <option name="LAST_COMMIT_MESSAGE" value="首页banner功能加入" />
+    <MESSAGE value="完结功能说明添加" />
+    <option name="LAST_COMMIT_MESSAGE" value="完结功能说明添加" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -961,8 +968,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="114">
-            <caret line="6" column="2" lean-forward="false" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
+          <first_editor relative-caret-position="133">
+            <caret line="7" column="15" lean-forward="false" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="15" />
             <folding />
           </first_editor>
           <second_editor />
